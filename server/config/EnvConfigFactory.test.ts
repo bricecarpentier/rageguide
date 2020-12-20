@@ -9,7 +9,39 @@ const d = (usecase: string, label: string) =>
 const mockToObject = (obj: Record<string, string>) => () => obj;
 
 Deno.test({
-  name: d("port", "returns 0 if not present"),
+  name: d("hostname", "defaults to 127.0.0.1"),
+  fn() {
+    const stubTO = stub(Deno.env, "toObject", mockToObject({}));
+    try {
+      const factory = new EnvConfigFactory(Deno.env);
+      const config = factory.build();
+      assertEquals(config.hostname, "127.0.0.1");
+    } finally {
+      stubTO.restore();
+    }
+  },
+});
+
+Deno.test({
+  name: d("hostname", "returns the value of HOSTNAME if present"),
+  fn() {
+    const stubTO = stub(
+      Deno.env,
+      "toObject",
+      mockToObject({ HOSTNAME: "daknet.org" })
+    );
+    try {
+      const factory = new EnvConfigFactory(Deno.env);
+      const config = factory.build();
+      assertEquals(config.hostname, "daknet.org");
+    } finally {
+      stubTO.restore();
+    }
+  },
+});
+
+Deno.test({
+  name: d("port", "defaults to 0"),
   fn() {
     const stubTO = stub(Deno.env, "toObject", mockToObject({}));
     try {

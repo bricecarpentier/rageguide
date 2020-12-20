@@ -28,6 +28,7 @@ export default class EnvConfigFactory extends AConfigFactory {
   build(): Config {
     const obj = this.env.toObject();
     return {
+      hostname: obj?.HOSTNAME ?? "127.0.0.1",
       port: parsePort(obj, "PORT"),
     };
   }

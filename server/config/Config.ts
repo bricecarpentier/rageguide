@@ -1,4 +1,5 @@
 type Config = {
+  readonly hostname: string;
   readonly port: number;
 };
 
