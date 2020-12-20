@@ -1,5 +1,6 @@
 imap: import_map.json
 unstable: true
+tsconfig: ./tsconfig.json
 
 scripts:
   lint:

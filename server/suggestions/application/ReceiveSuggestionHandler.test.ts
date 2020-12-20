@@ -2,14 +2,14 @@ import { stub } from "@testing/mocks";
 import describe from "@utils/testing/describe.ts";
 import { assert, assertThrowsAsync } from "std/testing/asserts.ts";
 import Suggestion from "../domain/Suggestion.ts";
-import ASuggestionRepository from "../domain/ASuggestionRepository.ts";
+import ISuggestionRepository from "../domain/ISuggestionRepository.ts";
 import { ReceiveSuggestion } from "./ReceiveSuggestion.ts";
 import ReceiveSuggestionHandler from "./ReceiveSuggestionHandler.ts";
 
 const d = (method: string, usecase: string, label: string) =>
   describe("ReceiveSuggestion", method, usecase, label);
 
-class TestSuggestionRepository extends ASuggestionRepository {
+class TestSuggestionRepository implements ISuggestionRepository {
   save(suggestion: Suggestion): Promise<Suggestion> {
     return Promise.resolve(suggestion);
   }
@@ -22,7 +22,7 @@ Deno.test({
     const handler = new ReceiveSuggestionHandler(null);
     assert(
       handler.willHandle("ReceiveSuggestion"),
-      "handler will not handle ReceiveSuggestion"
+      "handler will not handle ReceiveSuggestion",
     );
   },
 });
@@ -48,7 +48,7 @@ Deno.test({
     const actualSuggestion = await handler.handle(command);
     assert(
       actualSuggestion instanceof Suggestion,
-      "actualSuggestion is not a Suggestion instance"
+      "actualSuggestion is not a Suggestion instance",
     );
   },
 });

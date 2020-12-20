@@ -1,12 +1,15 @@
-import ASuggestionRepository from "@suggestions/domain/ASuggestionRepository.ts";
+import { Inject, Injectable } from "tsyringe";
+import ISuggestionRepository from "@suggestions/domain/ISuggestionRepository.ts";
 import ACommandHandler from "@utils/ddd/ACommandHandler.ts";
 import Suggestion from "../domain/Suggestion.ts";
 import type { ReceiveSuggestion } from "./ReceiveSuggestion.ts";
 
+@Injectable()
 export default class ReceiveSuggestionHandler extends ACommandHandler {
   public readonly type: string = "ReceiveSuggestion";
 
-  constructor(private repository: ASuggestionRepository) {
+  // prettier-ignore
+  constructor(@Inject("ISuggestionRepository") private repository: ISuggestionRepository) {
     super();
   }
 

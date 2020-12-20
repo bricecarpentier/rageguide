@@ -1,7 +1,10 @@
-import ASuggestionRepository from "../domain/ASuggestionRepository.ts";
+import { Injectable } from "tsyringe";
+import ISuggestionRepository from "../domain/ISuggestionRepository.ts";
 import Suggestion from "../domain/Suggestion.ts";
 
-export default class SuggestionRepositoryInMemory extends ASuggestionRepository {
+@Injectable()
+export default class SuggestionRepositoryInMemory
+  implements ISuggestionRepository {
   private suggestions: Record<string, Suggestion> = {};
 
   save(suggestion: Suggestion): Promise<Suggestion> {
