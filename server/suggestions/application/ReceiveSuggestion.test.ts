@@ -1,6 +1,6 @@
 import { stub, Stub } from "@testing/mocks";
 import describe from "@utils/testing/describe.ts";
-import { assert, assertThrowsAsync } from "@testing/asserts";
+import { assert, assertThrowsAsync } from "std/testing/asserts.ts";
 import Suggestion from "../domain/Suggestion.ts";
 import ASuggestionRepository from "../domain/ASuggestionRepository.ts";
 import ReceiveSuggestion from "./ReceiveSuggestion.ts";

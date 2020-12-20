@@ -1,4 +1,4 @@
-import { assert } from "@testing/asserts";
+import { assert } from "std/testing/asserts.ts";
 import describe from "@utils/testing/describe.ts";
 import Suggestion, { SuggestionData } from "./Suggestion.ts";
 
