@@ -1,0 +1,6 @@
+imap: import_map.json
+unstable: true
+
+scripts:
+  test:
+    cmd: deno test
