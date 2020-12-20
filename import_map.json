@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@suggestions/": "./server/suggestions/",
+    "@testing/asserts": "https://deno.land/std@0.81.0/testing/asserts.ts",
+    "@testing/mocks": "https://raw.githubusercontent.com/udibo/mock/v0.9.4/mod.ts",
+    "@utils/": "./utils/"
+  }
+}
