@@ -9,12 +9,7 @@ const d = (method: string, label: string) =>
   describe("CommandDispatcher", method, label);
 
 class MyCommandHandler implements ICommandHandler {
-  public type: string;
-  public spy: Spy<void>;
-  constructor(type: string, spy: Spy<void>) {
-    this.type = type;
-    this.spy = spy;
-  }
+  constructor(public type: string, public spy: Spy<void>) {}
 
   willHandle(type: string) {
     return type === this.type;

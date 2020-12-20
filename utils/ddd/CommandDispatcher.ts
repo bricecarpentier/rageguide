@@ -9,11 +9,8 @@ const handle = (command: CommandSchema) => (handler: ICommandHandler) =>
   handler.handle(command);
 
 export default class CommandDispatcher extends ACommandDispatcher {
-  private handlers: ICommandHandler[] = [];
-
-  constructor(handlers: ICommandHandler[]) {
+  constructor(private handlers: ICommandHandler[]) {
     super();
-    this.handlers = handlers;
   }
 
   register(handler: ICommandHandler): ACommandDispatcher {

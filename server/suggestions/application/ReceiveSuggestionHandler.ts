@@ -5,11 +5,9 @@ import type { ReceiveSuggestion } from "./ReceiveSuggestion.ts";
 
 export default class ReceiveSuggestionHandler extends ACommandHandler {
   public readonly type: string = "ReceiveSuggestion";
-  private repository: ASuggestionRepository;
 
-  constructor(repository: ASuggestionRepository) {
+  constructor(private repository: ASuggestionRepository) {
     super();
-    this.repository = repository;
   }
 
   async handle(command: ReceiveSuggestion): Promise<Suggestion> {

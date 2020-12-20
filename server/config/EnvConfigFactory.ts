@@ -19,10 +19,8 @@ const parsePort = (env: EnvObject, key: string): number => {
 };
 
 export default class EnvConfigFactory extends AConfigFactory {
-  private env: DenoEnv;
-  constructor(env: DenoEnv) {
+  constructor(private env: DenoEnv) {
     super();
-    this.env = env;
   }
 
   build(): Config {
