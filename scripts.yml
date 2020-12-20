@@ -6,3 +6,14 @@ scripts:
     cmd: deno lint
   test:
     cmd: deno test
+  start:
+    cmd: deno run server/index.ts -A
+    allow:
+      - net
+      - env
+  "start:watch":
+    cmd: deno run server/index.ts -A
+    watch: true
+    allow:
+      - net
+      - env

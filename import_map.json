@@ -1,6 +1,8 @@
 {
   "imports": {
+    "pogo": "https://raw.githubusercontent.com/sholladay/pogo/master/main.ts",
     "std/": "https://deno.land/std@0.81.0/",
+    "zod": "https://deno.land/x/doz/mod.ts",
     "@suggestions/": "./server/suggestions/",
     "@testing/mocks": "https://raw.githubusercontent.com/udibo/mock/v0.9.4/mod.ts",
     "@utils/": "./utils/"
