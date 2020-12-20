@@ -1,20 +1,11 @@
-import ASuggestionRepository from "@suggestions/domain/ASuggestionRepository.ts";
-import Suggestion from "../domain/Suggestion.ts";
+import z from "zod";
 
-type ReceiveSuggestionParams = {
-  id: string;
-  label: string;
-};
+export const schema = z.object({
+  type: z.literal("ReceiveSuggestion"),
+  payload: z.object({
+    id: z.string(),
+    label: z.string(),
+  }),
+});
 
-export default class ReceiveSuggestion {
-  private repository: ASuggestionRepository;
-
-  constructor(repository: ASuggestionRepository) {
-    this.repository = repository;
-  }
-
-  async exec(params: ReceiveSuggestionParams): Promise<Suggestion> {
-    const suggestion = await this.repository.save(new Suggestion(params));
-    return suggestion;
-  }
-}
+export type ReceiveSuggestion = z.infer<typeof schema>;
